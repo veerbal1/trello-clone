@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { Plus } from 'lucide-react';
 import { useLocalStorage } from 'usehooks-ts';
 import { useOrganization, useOrganizationList } from '@clerk/nextjs';
-import { Separator } from '@/components/ui/separator';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Accordion } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
@@ -42,8 +41,21 @@ function Sidebar({ storageKey = 't-sidebar-state' }: SidebarProps) {
   };
 
   if (!isLoadedOrg || !isLoadedOrgList || userMemberships.isLoading) {
-    return <Skeleton />;
+    return (
+      <>
+        <div className="flex justify-between items-center mb-2">
+          <Skeleton className="w-[50%] h-10" />
+          <Skeleton className="w-10 h-10" />
+        </div>
+        <div className="space-y-2">
+          <NavItem.Skeleton />
+          <NavItem.Skeleton />
+          <NavItem.Skeleton />
+        </div>
+      </>
+    );
   }
+
   return (
     <>
       <div className="font-medium text-xs flex items-center mb-1">
