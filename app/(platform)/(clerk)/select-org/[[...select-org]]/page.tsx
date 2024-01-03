@@ -5,6 +5,7 @@ function CreateOrganisationPage() {
     <OrganizationList
       hidePersonal
       afterSelectOrganizationUrl={'/organization/:id'}
+      afterCreateOrganizationUrl={'/organization/:id'}
     />
   );
 }
