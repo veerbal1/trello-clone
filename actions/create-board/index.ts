@@ -34,15 +34,6 @@ const handler = async (data: InputType): Promise<ReturnType> => {
   let board;
 
   try {
-    console.log({
-      title,
-      orgId,
-      imageFullUrl,
-      imageID,
-      imageLinkHTML,
-      imageThumbUrl,
-      imageUserName,
-    });
     board = await db.board.create({
       data: {
         title,
