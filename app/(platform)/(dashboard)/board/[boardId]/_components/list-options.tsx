@@ -14,7 +14,7 @@ import { Separator } from '@/components/ui/separator';
 import { useAction } from '@/hooks/use-action';
 import { deleteList } from '@/actions/delete-list';
 import { toast } from 'sonner';
-import { ElementRef, useRef } from 'react';
+import { ElementRef, useEffect, useRef, useState } from 'react';
 import { copyList } from '@/actions/copy-list';
 
 interface ListOptionsProps {
@@ -23,6 +23,7 @@ interface ListOptionsProps {
 }
 
 export const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
+  const [mounted, setMounted] = useState(false);
   const closeRef = useRef<ElementRef<'button'>>(null);
   const { execute: executeDelete } = useAction(deleteList, {
     onSuccess: (data) => {
@@ -61,9 +62,15 @@ export const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
     });
   };
 
+  useEffect(() => {
+    setMounted(true);
+  });
+
+  if (!mounted) return null;
+
   return (
     <Popover>
-      <PopoverTrigger>
+      <PopoverTrigger asChild>
         <Button className="p-2" variant={'ghost'} size="icon">
           <MoreHorizontal className="h-4 w-4" />
         </Button>
