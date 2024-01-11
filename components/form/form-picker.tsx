@@ -25,7 +25,7 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
     const fetchImages = async () => {
       try {
         // Temp
-        throw new Error('Unsplash error');
+        // throw new Error('Unsplash error');
         const results = await unsplash.photos.getRandom({
           collectionIds: ['317099'],
           count: 9,
@@ -38,7 +38,7 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
         }
       } catch (error) {
         console.log(error);
-        setImages(defaultImages);
+        // setImages(defaultImages);
       } finally {
         setIsLoading(false);
       }
