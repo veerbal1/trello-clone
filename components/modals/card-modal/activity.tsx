@@ -25,7 +25,7 @@ export const Activity = ({ items }: ActivityProps) => {
   );
 };
 
-Activity.Skeleton = () => {
+Activity.Skeleton = function ActivitySkeleton() {
   return (
     <div className="flex items-start gap-x-3 w-full">
       <Skeleton className="w-6 h-6 bg-neutral-200" />
